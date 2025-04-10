@@ -61,17 +61,22 @@ function Reviews() {
       return;
     }
     try {
-      const res = await fetch("http://localhost:5001/api/reviews", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
+      const res = await fetch(
+        "https://ajpplumbing-backend.onrender.com/api/reviews",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData),
+        }
+      );
       const data = await res.json();
       if (res.ok) {
         setStatus("✅ Review submitted!");
         setFormData({ name: "", email: "", rating: 0, message: "" });
         setErrors({});
-        const updated = await fetch("http://localhost:5001/api/reviews");
+        const updated = await fetch(
+          "https://ajpplumbing-backend.onrender.com/api/reviews"
+        );
         const updatedData = await updated.json();
         setReviews(updatedData);
       } else {

@@ -60,7 +60,19 @@ function Contact() {
       const autoReplyTemplateId = "template_908orhp";
       const publicKey = "m2fHjzz3OIB691Bli";
 
+      // ✅ 1. Save to backend database
+      await fetch("https://ajpplumbing-backend.onrender.com/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      // ✅ 2. Send email to YOU via EmailJS
       await emailjs.send(serviceId, contactTemplateId, formData, publicKey);
+
+      // ✅ 3. Auto-reply to USER via EmailJS
       await emailjs.send(serviceId, autoReplyTemplateId, formData, publicKey);
 
       setStatus("✅ Message sent!");
