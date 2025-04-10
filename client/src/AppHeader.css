@@ -1,0 +1,57 @@
+/* AppHeader.css */
+
+.desktop-menu {
+    display: flex;
+}
+
+.mobile-menu {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .desktop-menu {
+        display: none;
+    }
+    .mobile-menu {
+        display: flex;
+    }
+}
+
+.custom-tooltip {
+    position: absolute;
+    top: 50px;
+    right: 0;
+    background: #fffa87;
+    color: #111;
+    font-weight: bold;
+    padding: 10px 14px;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    opacity: 0;
+    transform: translateY(-5px);
+    transition: all 0.4s ease;
+    white-space: nowrap;
+    z-index: 1001;
+}
+
+.custom-tooltip.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.custom-tooltip.fade-out {
+    opacity: 0;
+    transform: translateY(-5px);
+}
+
+.tooltip-arrow {
+    position: absolute;
+    top: -8px;
+    right: 14px;
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-bottom: 8px solid #fffa87;
+}

@@ -1,0 +1,330 @@
+:root {
+    --primary-color: #003049;
+    --secondary-color: #1d3557;
+    --accent-color: #f4a261;
+    --bg-gradient-start: #cfd9df;
+    --bg-gradient-end: #e2ebf0;
+    --card-bg: #ffffff;
+    --card-hover-bg: #003049;
+    --card-hover-text: #ffffff;
+    --error-color: #e63946;
+    --shadow: rgba(0, 0, 0, 0.1);
+    --transition: all 0.4s ease;
+}
+
+
+/* FEATURES TICKER */
+
+.features-ticker {
+    width: 100%;
+    overflow: hidden;
+    background: black;
+    padding: 1rem 0;
+    margin: 0;
+    box-shadow: 0 4px 20px var(--shadow);
+}
+
+.features-ticker-content {
+    display: flex;
+    gap: 2rem;
+    white-space: nowrap;
+    animation: ticker 20s linear infinite;
+}
+
+.feature-item {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: yellow;
+    padding: 0 1rem;
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+@keyframes ticker {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+
+/* HERO SECTION */
+
+.hero-container {
+    display: flex;
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+}
+
+.hero-container::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background: linear-gradient(to bottom, transparent, #ffffff);
+    pointer-events: none;
+    z-index: 3;
+}
+
+.hero-image {
+    flex: 0 0 55%;
+    background-image: url("../assets/bghome3.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    position: relative;
+    z-index: 1;
+}
+
+.hero-gradient {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 50px;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0), #ffffff);
+}
+
+.hero-content {
+    flex: 0 0 45%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    z-index: 2;
+    background: #ffffff;
+}
+
+.hero-text-overlay {
+    background-color: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 2rem;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.hero-title {
+    color: var(--primary-color);
+    font-size: clamp(2.2rem, 5vw, 3.2rem);
+    margin-bottom: 1.5rem;
+    font-family: "Poppins", sans-serif;
+}
+
+.hero-description {
+    font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+    color: #333;
+}
+
+.hero-text-overlay .ant-space {
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+
+/* SECTION STYLING */
+
+.section {
+    padding: 5rem 2rem;
+}
+
+.section-title {
+    text-align: center;
+    color: var(--primary-color);
+}
+
+.section-description {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+    color: #555;
+}
+
+.services-section {
+    background: #d8ecf5;
+}
+
+.why-choose-section {
+    background: #ffffff;
+}
+
+.testimonials-section {
+    background: #f9f9f9;
+}
+
+
+/* CARD STYLE - COMMON */
+
+.ant-card {
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+    padding: 1.5rem 1rem;
+    text-align: center;
+    transition: var(--transition);
+    background: var(--card-bg);
+    color: #000;
+}
+
+.ant-card h4,
+.ant-card p,
+.why-choose-text {
+    transition: var(--transition);
+    color: #333;
+}
+
+.service-icon,
+.why-choose-icon {
+    font-size: 3.3rem;
+    color: var(--primary-color);
+    margin-bottom: 12px;
+    transition: var(--transition);
+    display: inline-block;
+}
+
+
+/* HOVER EFFECTS */
+
+.ant-card:hover {
+    background: var(--card-hover-bg) !important;
+    color: var(--card-hover-text) !important;
+}
+
+.ant-card:hover h4,
+.ant-card:hover p,
+.ant-card:hover .why-choose-text {
+    color: var(--card-hover-text) !important;
+}
+
+.ant-card:hover .service-icon,
+.ant-card:hover .why-choose-icon {
+    color: var(--accent-color) !important;
+}
+
+
+/* WHY CHOOSE */
+
+.why-choose-text {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+
+/* TESTIMONIALS CAROUSEL */
+
+.carousel-card {
+    max-width: 700px;
+    width: 100%;
+    height: 300px;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center;
+    background-color: #222;
+    color: #fff;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.carousel-paragraph,
+.carousel-text {
+    color: #fff;
+}
+
+.carousel-arrows {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.carousel-arrows .ant-btn {
+    margin: 0 0.5rem;
+    background: var(--primary-color);
+    color: #fff;
+    border: none;
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 1024px) {
+    .hero-container {
+        display: block;
+        height: auto;
+    }
+    .hero-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url("../assets/bghome2.png");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        z-index: 1;
+    }
+    .hero-gradient {
+        display: none;
+    }
+    .hero-content {
+        position: absolute;
+        z-index: 2;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 1.5rem;
+        width: 100%;
+        max-width: 500px;
+        background: none;
+    }
+    .hero-text-overlay {
+        width: 100%;
+        max-width: 100%;
+        padding: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .features-ticker-content {
+        gap: 1rem;
+        font-size: 1rem;
+    }
+    .hero-container::after {
+        height: 30px;
+    }
+    .hero-text-overlay {
+        padding: 1.5rem;
+        min-width: 100%;
+        min-height: auto;
+    }
+}
+
+@media (max-width: 435px) {
+    .hero-text-overlay {
+        min-width: 100%;
+        padding: 1rem;
+        font-size: 0.9rem;
+    }
+    .carousel-card {
+        height: auto;
+        padding: 1.5rem;
+    }
+}
+
+.equal-height-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}

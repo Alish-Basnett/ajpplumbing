@@ -1,0 +1,342 @@
+/* Reviews.css - Fully Responsive & Refined */
+
+:root {
+    --primary-color: #003049;
+    --secondary-color: #1d3557;
+    --accent-color: #f4a261;
+    --bg-gradient-start: #cfd9df;
+    --bg-gradient-end: #e2ebf0;
+    --card-bg: #ffffff;
+    --error-color: #e63946;
+    --shadow: rgba(0, 0, 0, 0.1);
+    --primary-font: "Open Sans", sans-serif;
+    --heading-font: "Poppins", sans-serif;
+}
+
+.reviews-page {
+    font-family: "Open Sans", sans-serif;
+    background: linear-gradient( 135deg, var(--bg-gradient-start), var(--bg-gradient-end));
+    color: var(--primary-color);
+    padding: 2rem 1rem;
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+.reviews-header {
+    text-align: center;
+    padding: 3rem 1rem;
+    margin-bottom: 2rem;
+    background-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 30px var(--shadow);
+}
+
+.reviews-header h1 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.reviews-header p {
+    font-size: 1.2rem;
+    color: var(--secondary-color);
+}
+
+.review-form-ratings-section {
+    display: flex;
+    gap: 2rem;
+    max-width: 1100px;
+    margin: 0 auto 3rem auto;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.left-ratings,
+.right-ratings {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    flex: 1;
+}
+
+.review-form-container {
+    background: var(--card-bg);
+    border-radius: 20px;
+    box-shadow: 0 8px 30px var(--shadow);
+    padding: 2rem;
+    flex: 2;
+    text-align: center;
+}
+
+.review-form-container h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+.rating-display {
+    background: var(--card-bg);
+    border-radius: 20px;
+    box-shadow: 0 8px 30px var(--shadow);
+    padding: 2rem;
+    text-align: center;
+}
+
+.rating-display h3 {
+    margin-top: 0.5rem;
+    font-size: 1.8rem;
+    color: var(--primary-color);
+}
+
+.rating-display p {
+    font-size: 1rem;
+    color: var(--secondary-color);
+}
+
+.rating-icon {
+    font-size: 3rem;
+    color: var(--accent-color);
+    margin-bottom: 0.5rem;
+}
+
+.review-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.form-group {
+    position: relative;
+}
+
+.review-form input,
+.review-form textarea {
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-size: 1rem;
+    width: 100%;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.review-form input:focus,
+.review-form textarea:focus {
+    border-color: var(--primary-color);
+}
+
+.review-form textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.rating-group {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    justify-content: center;
+}
+
+.review-form button {
+    padding: 1rem;
+    background: var(--primary-color);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    margin-top: 0.5rem;
+}
+
+.review-form button:hover {
+    background: var(--secondary-color);
+}
+
+.error {
+    position: absolute;
+    left: 0;
+    bottom: -1.2rem;
+    font-size: 0.85rem;
+    color: var(--error-color);
+}
+
+.review-status {
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 1.1rem;
+    color: var(--primary-color);
+}
+
+.review-list-section {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 1rem 4rem;
+}
+
+.review-list-section h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+    color: var(--primary-color);
+}
+
+.no-reviews {
+    text-align: center;
+    font-size: 1.2rem;
+    color: var(--secondary-color);
+}
+
+.review-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.review-card {
+    background: var(--card-bg);
+    border-radius: 15px;
+    padding: 1.5rem;
+    box-shadow: 0 6px 20px var(--shadow);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease;
+}
+
+.review-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.reviewer-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.review-card-header .avatar {
+    font-size: 2.5rem;
+    color: var(--accent-color);
+}
+
+.reviewer-info h3 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: var(--primary-color);
+}
+
+.reviewer-info .ant-rate {
+    font-size: 1rem;
+}
+
+.reviewer-thumb {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.review-text {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    color: var(--secondary-color);
+}
+
+.review-footer {
+    text-align: right;
+}
+
+.review-footer small {
+    font-size: 0.9rem;
+    color: #999;
+}
+
+
+/* Responsive Enhancements */
+
+@media (max-width: 768px) {
+    .review-form-ratings-section {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-areas: "form" "fb" "insta" "google" "twitter";
+        gap: 1.5rem;
+    }
+    .review-form-container {
+        grid-area: form;
+    }
+    .fb-rating {
+        grid-area: fb;
+    }
+    .insta-rating {
+        grid-area: insta;
+    }
+    .google-rating {
+        grid-area: google;
+    }
+    .twitter-rating {
+        grid-area: twitter;
+    }
+    .left-ratings,
+    .right-ratings {
+        display: contents;
+    }
+    .review-form-container h2,
+    .review-list-section h2 {
+        font-size: 2rem;
+    }
+    .reviews-header h1 {
+        font-size: 2.5rem;
+    }
+    .reviews-header p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .reviews-header h1 {
+        font-size: 2rem;
+    }
+    .reviews-header p {
+        font-size: 0.9rem;
+    }
+    .review-form-container {
+        padding: 1rem;
+        font-size: 0.9rem;
+    }
+    .review-grid {
+        gap: 1rem;
+    }
+    .review-form input,
+    .review-form textarea,
+    .review-form button {
+        font-size: 0.95rem;
+    }
+    .review-form button {
+        padding: 0.9rem;
+    }
+    .reviewer-info h3 {
+        font-size: 1.2rem;
+    }
+}
+
+
+/* font applications*/
+
+x.reviews-header h1,
+.review-form-container h2,
+.review-list-section h2 {
+    font-family: var(--heading-font);
+}
+
+.reviews-page,
+.review-text,
+.review-form input,
+.review-form textarea {
+    font-family: var(--primary-font);
+}
