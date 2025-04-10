@@ -22,9 +22,10 @@ function Reviews() {
   const [errors, setErrors] = useState({});
   const [status, setStatus] = useState("");
   const [reviews, setReviews] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    fetch("http://localhost:5001/api/reviews")
+    fetch("https://ajpplumbing-backend.onrender.com/api/reviews")
       .then((res) => res.json())
       .then((data) => setReviews(data))
       .catch((err) => console.error("Failed to load reviews:", err));
@@ -60,6 +61,9 @@ function Reviews() {
       setErrors(validationErrors);
       return;
     }
+
+    setLoading(true); // Show spinner
+
     try {
       const res = await fetch(
         "https://ajpplumbing-backend.onrender.com/api/reviews",
@@ -85,6 +89,8 @@ function Reviews() {
     } catch (err) {
       console.error(err);
       setStatus("❌ Network error");
+    } finally {
+      setLoading(false); // Hide spinner
     }
   };
 
@@ -156,6 +162,7 @@ function Reviews() {
               )}
             </div>
             <button type="submit">Submit Review</button>
+            {loading && <div className="spinner"></div>}
           </form>
           {status && <p className="review-status">{status}</p>}
         </div>
