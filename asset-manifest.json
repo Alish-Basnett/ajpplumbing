@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/ajpplumbing/static/css/main.497a6c4b.css",
+    "main.js": "/ajpplumbing/static/js/main.3701407e.js",
+    "static/js/453.419a5d54.chunk.js": "/ajpplumbing/static/js/453.419a5d54.chunk.js",
+    "static/media/plumbing-bg.jpg": "/ajpplumbing/static/media/plumbing-bg.8955a9f6fd81763e2d57.jpg",
+    "static/media/bghome2.png": "/ajpplumbing/static/media/bghome2.884520bfd8e66959bb5d.png",
+    "static/media/serviceimage5.jpg": "/ajpplumbing/static/media/serviceimage5.b32004847ac89a38f04f.jpg",
+    "static/media/bghome3.png": "/ajpplumbing/static/media/bghome3.96784f577ed25553d72f.png",
+    "static/media/serviceimage3.jpg": "/ajpplumbing/static/media/serviceimage3.29bc70e7fdcc3ac1f1f0.jpg",
+    "static/media/serviceimage4.jpg": "/ajpplumbing/static/media/serviceimage4.a71c02672aba1107e9d0.jpg",
+    "static/media/serviceimage1.jpg": "/ajpplumbing/static/media/serviceimage1.e8a273af805cdd281cf5.jpg",
+    "static/media/sunrise-bg.jpg": "/ajpplumbing/static/media/sunrise-bg.da7dcc1420a6db9b1ad3.jpg",
+    "static/media/serviceimage2.jpg": "/ajpplumbing/static/media/serviceimage2.b5aee937ff36af18f922.jpg",
+    "static/media/AJPLOGO.webp": "/ajpplumbing/static/media/AJPLOGO.c7aee2e4f37249b03341.webp",
+    "index.html": "/ajpplumbing/index.html",
+    "main.497a6c4b.css.map": "/ajpplumbing/static/css/main.497a6c4b.css.map",
+    "main.3701407e.js.map": "/ajpplumbing/static/js/main.3701407e.js.map",
+    "453.419a5d54.chunk.js.map": "/ajpplumbing/static/js/453.419a5d54.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.497a6c4b.css",
+    "static/js/main.3701407e.js"
+  ]
+}
