@@ -62,10 +62,19 @@ const Review = require("./models/Review");
 app.post("/api/reviews", async (req, res) => {
   try {
     const { name, email, rating, message } = req.body;
+    console.log("📥 Incoming Review:", req.body); // log incoming data
+
+    if (!name || !email || !rating || !message) {
+      return res.status(400).json({ success: false, error: "Missing fields" });
+    }
+
     const review = new Review({ name, email, rating, message });
     await review.save();
+
+    console.log("✅ Review saved:", review);
     res.status(201).json({ success: true, message: "Review submitted!" });
   } catch (err) {
+    console.error("❌ Error saving review:", err);
     res.status(500).json({ success: false, error: "Failed to submit review" });
   }
 });
