@@ -334,6 +334,12 @@ x.reviews-header h1,
     font-family: var(--heading-font);
 }
 
+.view-toggle {
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+}
+
 .reviews-page,
 .review-text,
 .review-form input,
