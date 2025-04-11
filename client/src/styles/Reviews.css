@@ -267,6 +267,9 @@
         grid-template-areas: "form" "fb" "insta" "google" "twitter";
         gap: 1.5rem;
     }
+    .swipe-container {
+        height: 400px;
+    }
     .review-form-container {
         grid-area: form;
     }
@@ -299,6 +302,9 @@
 }
 
 @media (max-width: 480px) {
+    .swipe-container {
+        height: 450px;
+    }
     .reviews-header h1 {
         font-size: 2rem;
     }
@@ -363,4 +369,16 @@ x.reviews-header h1,
     to {
         transform: rotate(360deg);
     }
+}
+
+.swipe-container {
+    width: 100%;
+    height: 350px;
+    /* set a fixed or min height that fits most cards */
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-bottom: 2rem;
 }
