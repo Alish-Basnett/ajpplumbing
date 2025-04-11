@@ -76,11 +76,7 @@ const AppHeader = () => {
             position: "relative",
           }}
         >
-          <img
-            src={require("/AJPLOGO.webp")}
-            alt="AJP Logo"
-            style={{ height: "50px" }}
-          />
+          <img src="/AJPLOGO.webp" alt="AJP Logo" style={{ height: "50px" }} />
 
           {/* Desktop Navigation */}
           <div className="desktop-menu">
