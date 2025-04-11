@@ -25,10 +25,12 @@ function Reviews() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    setLoading(true); // Start spinner before fetch
     fetch("https://ajpplumbing-backend.onrender.com/api/reviews")
       .then((res) => res.json())
       .then((data) => setReviews(data))
-      .catch((err) => console.error("Failed to load reviews:", err));
+      .catch((err) => console.error("Failed to load reviews:", err))
+      .finally(() => setLoading(false)); // Stop spinner
   }, []);
 
   const validate = () => {
@@ -183,7 +185,9 @@ function Reviews() {
       </section>
       <section className="review-list-section">
         <h2>Client Testimonials</h2>
-        {reviews.length === 0 ? (
+        {loading ? (
+          <div className="spinner" style={{ marginTop: "2rem" }}></div>
+        ) : reviews.length === 0 ? (
           <p className="no-reviews">
             No reviews yet. Be the first to share your amazing experience!
           </p>
