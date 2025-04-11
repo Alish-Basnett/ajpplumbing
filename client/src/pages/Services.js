@@ -3,13 +3,31 @@ import "../styles/Services.css";
 
 function Services() {
   const [services, setServices] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:5001/api/services")
-      .then((res) => res.json())
-      .then((data) => setServices(data))
-      .catch((err) => console.error("Failed to load services:", err));
+    fetch("https://ajpplumbing-backend.onrender.com/api/services")
+      .then((res) => {
+        console.log("Response status:", res.status);
+        return res.json();
+      })
+      .then((data) => {
+        console.log("Fetched services:", data);
+        setServices(data);
+      })
+      .catch((err) => console.error("Failed to load services:", err))
+      .finally(() => setLoading(false));
   }, []);
+
+  // Try to load image safely
+  const getServiceImage = (index) => {
+    try {
+      return require(`../assets/serviceimage${index + 1}.jpg`);
+    } catch (e) {
+      console.warn(`Image for service ${index + 1} not found.`);
+      return require(`../assets/serviceimage1.jpg`); // fallback image
+    }
+  };
 
   return (
     <div className="services-page">
@@ -21,14 +39,17 @@ function Services() {
           your home safe and comfortable.
         </p>
       </header>
+
       <div className="services-grid">
-        {services.length === 0 ? (
+        {loading ? (
+          <div className="spinner"></div>
+        ) : services.length === 0 ? (
           <p className="no-services">No services listed yet.</p>
         ) : (
           services.map((service, index) => (
             <div key={service._id} className="service-card">
               <img
-                src={require(`../assets/serviceimage${index + 1}.jpg`)}
+                src={getServiceImage(index)}
                 alt={service.title}
                 className="service-image"
               />
