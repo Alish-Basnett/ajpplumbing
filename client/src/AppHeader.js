@@ -77,7 +77,7 @@ const AppHeader = () => {
           }}
         >
           <img
-            src={require("./assets/AJPLOGO.webp")}
+            src={"/AJPLOGO.webp"}
             alt="AJP Logo"
             style={{ height: "50px" }}
           />
