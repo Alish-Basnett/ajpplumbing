@@ -60,7 +60,7 @@ function Contact() {
       const autoReplyTemplateId = "template_908orhp";
       const publicKey = "m2fHjzz3OIB691Bli";
 
-      // ✅ 1. Save to backend database
+      // ✅ Save to DB
       await fetch("https://ajpplumbing-backend.onrender.com/api/contact", {
         method: "POST",
         headers: {
@@ -69,17 +69,17 @@ function Contact() {
         body: JSON.stringify(formData),
       });
 
-      // ✅ 2. Send email to YOU via EmailJS
+      // ✅ Email to AJP
       await emailjs.send(serviceId, contactTemplateId, formData, publicKey);
 
-      // ✅ 3. Auto-reply to USER via EmailJS
+      // ✅ Auto-reply to user
       await emailjs.send(serviceId, autoReplyTemplateId, formData, publicKey);
 
       setStatus("✅ Message sent!");
       setFormData({ name: "", email: "", phone: "", message: "" });
       setErrors({});
 
-      // ✅ 4. Google Ads Conversion Event
+      // ✅ ✅ ✅ Google Ads Conversion Trigger
       if (window.gtag) {
         window.gtag("event", "conversion", {
           send_to: "AW-16881512764/oNeqCL3Y37oaELzi3fE-",
