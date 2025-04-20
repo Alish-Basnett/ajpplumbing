@@ -78,6 +78,13 @@ function Contact() {
       setStatus("✅ Message sent!");
       setFormData({ name: "", email: "", phone: "", message: "" });
       setErrors({});
+
+      // ✅ 4. Google Ads Conversion Event
+      if (window.gtag) {
+        window.gtag("event", "conversion", {
+          send_to: "AW-16881512764/oNeqCL3Y37oaELzi3fE-",
+        });
+      }
     } catch (err) {
       console.error(err);
       setStatus("❌ Failed to send message");

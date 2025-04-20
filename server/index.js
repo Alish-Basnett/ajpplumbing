@@ -8,11 +8,40 @@ const cors = require("cors");
 const app = express();
 const PORT = process.env.PORT || 5001;
 
-// Middleware
-app.use(cors());
+// CORS Middleware (allow only frontend domains)
+const allowedOrigins = [
+  "http://localhost:3000",
+  "https://ajpplumbing.vercel.app",
+];
+
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      // Allow requests with no origin like mobile apps or curl
+      if (!origin) return callback(null, true);
+      if (allowedOrigins.includes(origin)) return callback(null, true);
+      return callback(new Error("Not allowed by CORS"));
+    },
+    methods: ["GET", "POST"],
+    credentials: true,
+  })
+);
+
+// Handle preflight and headers
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", req.headers.origin || "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+  next();
+});
+
+// Middleware to parse JSON
 app.use(express.json());
 
-// MongoDB connection
+// MongoDB Connection
 const MONGO_URI = process.env.MONGO_URI;
 mongoose
   .connect(MONGO_URI, {
@@ -22,25 +51,33 @@ mongoose
   .then(() => console.log("✅ Connected to MongoDB"))
   .catch((err) => console.error("❌ MongoDB connection error:", err));
 
-// Test route
+// Test Route
 app.get("/", (req, res) => {
   res.send("Server is running...");
 });
 
-// Contact Message Post and Get Route
+// ============================================
+// CONTACT ROUTES
+// ============================================
 
 const ContactMessage = require("./models/ContactMessage");
 
 app.post("/api/contact", async (req, res) => {
   try {
-    const { name, email, phone, message } = req.body; // <- Add phone here!
+    const { name, email, phone, message } = req.body;
+
+    if (!name || !email || !phone || !message) {
+      return res
+        .status(400)
+        .json({ success: false, error: "All fields required" });
+    }
 
     const newMessage = new ContactMessage({ name, email, phone, message });
     await newMessage.save();
 
     res.status(201).json({ success: true, message: "Message received!" });
   } catch (err) {
-    console.error(err);
+    console.error("❌ Contact form error:", err);
     res.status(500).json({ success: false, error: "Something went wrong" });
   }
 });
@@ -54,15 +91,15 @@ app.get("/api/contact", async (req, res) => {
   }
 });
 
-// POST + GET Customer Reviews
+// ============================================
+// REVIEWS ROUTES
+// ============================================
 
 const Review = require("./models/Review");
 
-// Submit review
 app.post("/api/reviews", async (req, res) => {
   try {
     const { name, email, rating, message } = req.body;
-    console.log("📥 Incoming Review:", req.body); // log incoming data
 
     if (!name || !email || !rating || !message) {
       return res.status(400).json({ success: false, error: "Missing fields" });
@@ -71,7 +108,6 @@ app.post("/api/reviews", async (req, res) => {
     const review = new Review({ name, email, rating, message });
     await review.save();
 
-    console.log("✅ Review saved:", review);
     res.status(201).json({ success: true, message: "Review submitted!" });
   } catch (err) {
     console.error("❌ Error saving review:", err);
@@ -79,7 +115,6 @@ app.post("/api/reviews", async (req, res) => {
   }
 });
 
-// Get all reviews
 app.get("/api/reviews", async (req, res) => {
   try {
     const reviews = await Review.find().sort({ createdAt: -1 });
@@ -89,11 +124,12 @@ app.get("/api/reviews", async (req, res) => {
   }
 });
 
-// GET + (Optional POST) Services
+// ============================================
+// SERVICES ROUTES
+// ============================================
 
 const Service = require("./models/Service");
 
-// Get all services
 app.get("/api/services", async (req, res) => {
   try {
     const services = await Service.find().sort({ createdAt: -1 });
@@ -103,19 +139,26 @@ app.get("/api/services", async (req, res) => {
   }
 });
 
-// Optional: Add a new service (for admin use later)
 app.post("/api/services", async (req, res) => {
   try {
     const { title, description, priceRange } = req.body;
+
+    if (!title || !description) {
+      return res
+        .status(400)
+        .json({ success: false, error: "Title and description are required" });
+    }
+
     const service = new Service({ title, description, priceRange });
     await service.save();
+
     res.status(201).json({ success: true, message: "Service added!" });
   } catch (err) {
     res.status(500).json({ success: false, error: "Failed to add service" });
   }
 });
 
-// Start server
+// Start Server
 app.listen(PORT, () => {
   console.log(`🚀 Server running on port ${PORT}`);
 });
